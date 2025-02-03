@@ -5,12 +5,18 @@ Das Repository der Wangener Soccer Gruppe des SFZ.
 ## Programm
 
 ```mermaid
-flowchart TD
-    d1(Drehen bis Ball gefunden)
-    d2(Vorwärts bis Ball erreicht)
-    d3(Mit Ball zum Tor drehen)
-    d4(In das Tor fahren)
-    d1 --> d2
-    d2 --> d3
-    d3 --> d4
+flowchart TB
+    subgraph fahrZumBall
+        direction TB
+        d1(Drehen bis der Ball gefunden)
+        d2(Vorwärts bis der Ball erreicht)
+        d1 --> d2
+    end
+    subgraph fahrInsTor
+        direction TB
+        d3(Mit dem Ball zum Tor drehen)
+        d4(In das Tor fahren)
+        d3 --> d4
+    end
+    fahrZumBall --> fahrInsTor
 ```
