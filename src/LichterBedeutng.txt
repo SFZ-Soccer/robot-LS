@@ -1,0 +1,15 @@
+1. Licht hinten(12)-StatusIR:
+	-weiß: kein Ball
+	-grün: Ball
+
+2. Licht vorne(6)-FunktionStatus:
+	-blau: Ball in Fangeinrichtung und fahre aufs Tor
+	-gelb: IRmove
+	-rot: zurücksetzen
+
+3. seitliche LEDs:
+	-rechts: = rechts
+	-links: = links
+	-beide: = geradeaus
+
+	--> grün
