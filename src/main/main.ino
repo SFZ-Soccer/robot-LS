@@ -18,12 +18,11 @@ bool startbutton_pressed = false;
 MeEncoderOnBoard m1(SLOT1); // rechts
 MeEncoderOnBoard m2(SLOT2); // links
 MeUltrasonicSensor ultraSensor(PORT_7);
+Me4Button btn(PORT_9);
 MePotentiometer potentiometer_6(8);
 MeRGBLed rgb(0, 12);
 Pixy2 pixy;
 
-
-Me4Button btn(PORT_9);
 uint8_t keyPressed = KEY_NULL;
 uint8_t keyPressedPrevious = KEY_NULL;
 
