@@ -1,0 +1,27 @@
+1:
+2: linke IR-Sensor
+3:
+4:
+5:
+6:
+7:  Ultraschallsensor
+8:  Poti
+9:  4Button
+10: rechter IR-Sensor
+
+--> neuer Robotter (V2)
+
+----------------------------------------
+
+1:
+2: linke IR-Sensor
+3:
+4:
+5:
+6:  Dribbler
+7:  Ultraschallsensor
+8:  Poti
+9:  4Button
+10: rechter IR-Sensor
+
+--> alter Robotter (V1)

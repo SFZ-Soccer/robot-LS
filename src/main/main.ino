@@ -10,7 +10,7 @@ int torX;
 int width;
 long stehzeit = 0;
 int x;
-int Entfernung_Ball = 7;
+int Entfernung_Ball = 7; //4.5
 int Drehen = 75; //75
 int Fahren = 170; //170
 const int wackelgrenze = 645;
@@ -259,7 +259,7 @@ void loop() {
 
         //dataoutput();
 
-        if(m1.getCurrentSpeed() || m2.getCurrentSpeed() <= 10.00 && m1.getCurrentSpeed() || m2.getCurrentSpeed() >= -10.00) {
+        if((m1.getCurrentSpeed() <= 10.00 || m2.getCurrentSpeed() <= 10.00) && (m1.getCurrentSpeed() >= -10.00 || m2.getCurrentSpeed() >= -10.00)) { //10 - (-10)
           stehzeit++;
           Serial.println(stehzeit);
           if(stehzeit >= 1500) {
