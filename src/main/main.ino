@@ -12,7 +12,7 @@ int width;
 int dribblerspeed = 100;
 long stehzeit = 0;
 int x;
-int Entfernung_Ball = 7; //4.5
+int Entfernung_Ball = 4.6; //4.5
 int Drehen = 75; //75
 int Fahren = 170; //170
 const int wackelgrenze = 645;
