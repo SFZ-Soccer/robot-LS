@@ -7,9 +7,11 @@
 7:  Ultraschallsensor
 8:  Poti
 9:  4Button
-10: rechter IR-Sensor
+10: +/- IR-Sensor
 
 --> neuer Robotter (V2)
+
+!1: die Interrupt Pins sind genau andersrum als beim alten Robotter (im Program)
 
 ----------------------------------------
 
@@ -22,6 +24,6 @@
 7:  Ultraschallsensor
 8:  Poti
 9:  4Button
-10: rechter IR-Sensor
+10: +/- IR-Sensor
 
 --> alter Robotter (V1)

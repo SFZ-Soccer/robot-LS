@@ -12,7 +12,7 @@ int width;
 int dribblerspeed = 100;
 long stehzeit = 0;
 int x;
-int Entfernung_Ball = 4.6; //4.5
+int Entfernung_Ball = 4.9; //4.5
 int Drehen = 75; //75
 int Fahren = 170; //170
 const int wackelgrenze = 645;
@@ -233,19 +233,19 @@ void IRmove() {
 void setup () {
   rgb.setpin(44);
   Serial.begin (9600);
-  pixy.init();
+  pixy.init(); 
   rgb.setColor(0,0,0,0); 
   rgb.show();
   dribbler.begin();
-  attachInterrupt(digitalPinToInterrupt(3), detectedR, CHANGE);
-  attachInterrupt(digitalPinToInterrupt(2), detectedL, CHANGE);
+  dribbler.runSpeed(dribblerspeed);
+  attachInterrupt(digitalPinToInterrupt(2), detectedR, CHANGE);
+  attachInterrupt(digitalPinToInterrupt(3), detectedL, CHANGE);
 
   attachInterrupt(m1.getIntNum(), isr_process_encoder1, RISING);
   attachInterrupt(m2.getIntNum(), isr_process_encoder2, RISING);
 }
 
 void loop() {
-
   keyPressed = btn.pressed();
  
     if(startbutton_pressed == false){
@@ -253,7 +253,6 @@ void loop() {
         startbutton_pressed = true;
       }
     } else {
-        dribbler.runSpeed(dribblerspeed);
         erg1 = Ra + Rb + Rc + Rd + Re;
         zeitHighRneu = erg1 / 4;
         erg2 = La + Lb + Lc + Ld + Le;
