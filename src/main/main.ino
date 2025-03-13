@@ -1,6 +1,7 @@
 #include <MeEncoderOnBoard.h>
 #include <MeAuriga.h>
 #include <Pixy2.h>
+#include <Wire.h>
 
 volatile unsigned long alteZeitR, alteZeitL, neueZeitR, neueZeitL, zeitLowR, zeitLowL, zeitHighR, zeitHighL,zeitHighRneu,zeitHighLneu,Ra,Rb,Rc,Rd,Re,La,Lb,Lc,Ld,Le,erg1,erg2;
 int m1dataspeed,m2dataspeed;
@@ -8,6 +9,7 @@ int torDeadzoneMin = 120; //200
 int torDeadzoneMax = 220; //280
 int torX;
 int width;
+int dribblerspeed = 100;
 long stehzeit = 0;
 int x;
 int Entfernung_Ball = 7; //4.5
@@ -20,6 +22,7 @@ MeEncoderOnBoard m2(SLOT2); // links
 MeUltrasonicSensor ultraSensor(PORT_7);
 Me4Button btn(PORT_9);
 MePotentiometer potentiometer_6(8);
+MeEncoderMotor dribbler(0x09,1);
 MeRGBLed rgb(0, 12);
 Pixy2 pixy;
 
@@ -231,8 +234,9 @@ void setup () {
   rgb.setpin(44);
   Serial.begin (9600);
   pixy.init();
-  rgb.setColor(0,0,0,0); //grün
+  rgb.setColor(0,0,0,0); 
   rgb.show();
+  dribbler.begin();
   attachInterrupt(digitalPinToInterrupt(3), detectedR, CHANGE);
   attachInterrupt(digitalPinToInterrupt(2), detectedL, CHANGE);
 
@@ -245,10 +249,11 @@ void loop() {
   keyPressed = btn.pressed();
  
     if(startbutton_pressed == false){
-      if (keyPressed == KEY_1){
+      if (keyPressed == KEY_3){
         startbutton_pressed = true;
       }
     } else {
+        dribbler.runSpeed(dribblerspeed);
         erg1 = Ra + Rb + Rc + Rd + Re;
         zeitHighRneu = erg1 / 4;
         erg2 = La + Lb + Lc + Ld + Le;
