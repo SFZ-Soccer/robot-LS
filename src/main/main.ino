@@ -22,7 +22,7 @@ MeEncoderOnBoard m2(SLOT2); // links
 MeUltrasonicSensor ultraSensor(PORT_7);
 Me4Button btn(PORT_9);
 MePotentiometer potentiometer_6(8);
-MeEncoderMotor dribbler(0x09,1);
+//MeEncoderMotor dribbler(0x09,1);
 MeRGBLed rgb(0, 12);
 Pixy2 pixy;
 
@@ -236,8 +236,8 @@ void setup () {
   pixy.init(); 
   rgb.setColor(0,0,0,0); 
   rgb.show();
-  dribbler.begin();
-  dribbler.runSpeed(dribblerspeed);
+  //dribbler.begin();
+  //dribbler.runSpeed(dribblerspeed);
   attachInterrupt(digitalPinToInterrupt(2), detectedR, CHANGE);
   attachInterrupt(digitalPinToInterrupt(3), detectedL, CHANGE);
 
