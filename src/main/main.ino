@@ -12,7 +12,7 @@ int width;
 int dribblerspeed = 100;
 long stehzeit = 0;
 int x;
-int Entfernung_Ball = 4.9; //4.5
+int Entfernung_Ball = 4.6; //4.6
 int Drehen = 75; //75
 int Fahren = 170; //170
 const int wackelgrenze = 645;
@@ -22,7 +22,7 @@ MeEncoderOnBoard m2(SLOT2); // links
 MeUltrasonicSensor ultraSensor(PORT_7);
 Me4Button btn(PORT_9);
 MePotentiometer potentiometer_6(8);
-//MeEncoderMotor dribbler(0x09,1);
+MeEncoderMotor dribbler(0x09,1);
 MeRGBLed rgb(0, 12);
 Pixy2 pixy;
 
@@ -236,8 +236,8 @@ void setup () {
   pixy.init(); 
   rgb.setColor(0,0,0,0); 
   rgb.show();
-  //dribbler.begin();
-  //dribbler.runSpeed(dribblerspeed);
+  dribbler.begin();
+  dribbler.runSpeed(dribblerspeed);
   attachInterrupt(digitalPinToInterrupt(2), detectedR, CHANGE);
   attachInterrupt(digitalPinToInterrupt(3), detectedL, CHANGE);
 
