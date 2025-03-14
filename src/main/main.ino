@@ -12,9 +12,9 @@ int width;
 int dribblerspeed = 100;
 long stehzeit = 0;
 int x;
-int Entfernung_Ball = 4.6; //4.6
-int Drehen = 75; //75
-int Fahren = 170; //170
+int Entfernung_Ball = 4; //4.6
+int Drehen = 90; //75
+int Fahren = 190; //170
 const int wackelgrenze = 645;
 bool startbutton_pressed = false;
 MeEncoderOnBoard m1(SLOT1); // rechts
@@ -308,11 +308,3 @@ void loop() {
         }
     }
 }
-
-
-
-  
-
-
-
-
