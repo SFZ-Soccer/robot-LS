@@ -13,8 +13,8 @@ int dribblerspeed = 100;
 long stehzeit = 0;
 int x;
 int Entfernung_Ball = 4; //4.6
-int Drehen = 90; //75
-int Fahren = 190; //170
+int Drehen = 100; //75
+int Fahren = 200; //170
 const int wackelgrenze = 645;
 bool startbutton_pressed = false;
 MeEncoderOnBoard m1(SLOT1); // rechts
@@ -147,8 +147,11 @@ void getTor(int torcolor) {
       }
 
     }
-  }  
-  } else if(torcolor == 2) { //blau
+  } else {
+    move(Drehen,Drehen *-1); //Panzerdrehung
+  }
+  
+  if(torcolor == 2) { //blau
     pixy.ccc.getBlocks();
     // Wenn Blöcke erkannt wurden (mindestens ein Block)
     if (pixy.ccc.numBlocks) {
@@ -162,9 +165,11 @@ void getTor(int torcolor) {
       }
 
       }
-    }   
+    }  
+  } else {
+    move(Drehen,Drehen *-1); //Panzerdrehung
   }
-  
+  }
 }
 
 void moveTor() {
