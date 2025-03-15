@@ -214,7 +214,7 @@ void IRmove() {
     rgb.setColor(4,0,50,0); //grün
     rgb.setColor(8,0,50,0); //grün
     rgb.show();
-    if(zeitHighLneu >= 100){
+    if(zeitHighLneu >= 65){ //60
       //rgb.setColor(12,180,0,0); //rot
       //rgb.show();
       move(Fahren,Fahren);
