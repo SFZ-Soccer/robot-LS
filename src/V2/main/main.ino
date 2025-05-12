@@ -58,7 +58,7 @@ void loop() {
       irmove();
     }
     else {
-      if ((/*Poti oder SchalterWert */ < (500))
+      if (/*Poti oder SchalterWert */ < (500))
       {
         tormove(1); //torfarbe ist gelb
       }
