@@ -7,12 +7,20 @@
 //MeEncoderOnBoard m1(SLOT1); // rechts
 //MeEncoderOnBoard m2(SLOT2); // links
 
+<<<<<<< HEAD
 //void move(int m1speed, int m2speed) {
+=======
+void move(int m1speed, int m2speed) {
+>>>>>>> 6cbc0f656c87e51c22c3525a176c31ed5147b23b
   //m1.setMotorPwm(m1speed * -1);
   //m2.setMotorPwm(m2speed);
   //m1dataspeed = m1speed;
   //m2dataspeed = m2speed;
+<<<<<<< HEAD
 //}
+=======
+}
+>>>>>>> 6cbc0f656c87e51c22c3525a176c31ed5147b23b
 
 //--Setup und Loop--------------------------------------------------
 

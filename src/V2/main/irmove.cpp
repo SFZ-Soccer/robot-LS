@@ -1,4 +1,5 @@
 #include <Arduino.h>
+<<<<<<< HEAD
 #include "irmove.h"
 #include "tormove.h"
 #define NUM_SENSORS 12 //Anzahl Sensoren
@@ -7,17 +8,38 @@
 
 float irValue[NUM_SENSORS] = {0,0,0,0,0,0,0,0,0,0,0,0};  // Array für 12 Sensoren //Speicherplatz für die Sensorenwerte
 const float irYcon[NUM_SENSORS] = { //Y constanten zur Berechnung von PowwerY
+=======
+#include <MeAuriga.h>
+#include "irmove.h"
+#include "tormove.h"
+#define NUM_SENSORS 12
+
+MeRGBLed rgb(0, 12);
+
+float irValue[NUM_SENSORS] = {0,0,0,0,0,0,0,0,0,0,0,0};  // Array für 12 Sensoren
+const float irXcon[NUM_SENSORS] = { 
+>>>>>>> 6cbc0f656c87e51c22c3525a176c31ed5147b23b
     1.0000, 0.8660, 0.5000, 0.0000, -0.5000, -0.8660, 
     -1.0000, -0.8660, -0.5000, -0.0000, 0.5000, 0.8660 
 };
 
+<<<<<<< HEAD
 const float irXcon[NUM_SENSORS] = { //X constanten zur Berehnung von PowerX
+=======
+const float irYcon[NUM_SENSORS] = { 
+>>>>>>> 6cbc0f656c87e51c22c3525a176c31ed5147b23b
     0.0000, 0.5000, 0.8660, 1.0000, 0.8660, 0.5000, 
     0.0000, -0.5000, -0.8660, -1.0000, -0.8660, -0.5000 
 };
 
+<<<<<<< HEAD
 long zeit, zeitA, zeitN, zeitH, zeitL, messungen, highs, lows, wechsel; //Benötigt für die Messung
 bool zustand; //Zustand des IR-Sensors HIGH/LOW
+=======
+long zeit, zeitA, zeitN, zeitH, zeitL, messungen, highs, lows, wechsel;
+bool zustand;
+int rgbRingPin = 0;
+>>>>>>> 6cbc0f656c87e51c22c3525a176c31ed5147b23b
 
 float powerY = 0; //Durschnittlicher Wert nach vorne/hinten berechnet aus den irWerten und den Constanten
 float powerX = 0; //Durschnittlicher Wert nach links/rechts berechnet aus den irWerten und den Constanten
@@ -44,7 +66,11 @@ int irmove() {
 //--Nebenfunktionen von IRmove ------------------------
 
 void get_irValue() {
+<<<<<<< HEAD
     // Schleife über alle Sensorpins (2 bis 9 und 30 bis 33) (2 for-Schleiefen)
+=======
+    // Schleife über alle Sensorpins (2 bis 9 und 30 bis 33)
+>>>>>>> 6cbc0f656c87e51c22c3525a176c31ed5147b23b
   for (int i = 2; i <= 9; i++) {
     zeit = micros();
     zeitA = zeit;
@@ -117,6 +143,29 @@ void get_irValue() {
     irValue[sensorIndex] = zeitH / 13; //nur um den Wert niedrig zu halten
     zeit = micros() - zeit;
   }
+<<<<<<< HEAD
+=======
+
+  rgb.setColor(0, 0,0,0);
+  // Ausgabe aller 12 Sensorwerte
+  for (int i = 0; i < NUM_SENSORS; i++) {
+    rgbRingPin = i + 1;
+    Serial.print("Sensor ");
+    Serial.print(rgbRingPin);
+    if(irValue[i] <= 140) {
+      rgb.setColor(rgbRingPin, 0,0,0);
+    } else {
+      rgb.setColor(rgbRingPin, irValue[i],0,0);
+    }
+    Serial.print(": ");
+    Serial.println(irValue[i]);
+  }
+
+  rgb.show();
+
+  Serial.println("------------------------");
+  delay(1);
+>>>>>>> 6cbc0f656c87e51c22c3525a176c31ed5147b23b
 }
 
 void get_irX() {
