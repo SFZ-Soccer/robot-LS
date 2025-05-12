@@ -1,2 +1,4 @@
 int irmove();
-int getAngel();
+void get_irValue();
+void get_irX();
+void get_irY();
