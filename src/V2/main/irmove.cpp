@@ -1,5 +1,4 @@
 #include <Arduino.h>
-<<<<<<< HEAD
 #include "irmove.h"
 #include "tormove.h"
 #define NUM_SENSORS 12 //Anzahl Sensoren
@@ -23,7 +22,6 @@ const float irXcon[NUM_SENSORS] = {
     -1.0000, -0.8660, -0.5000, -0.0000, 0.5000, 0.8660 
 };
 
-<<<<<<< HEAD
 const float irXcon[NUM_SENSORS] = { //X constanten zur Berehnung von PowerX
 =======
 const float irYcon[NUM_SENSORS] = { 
@@ -32,7 +30,6 @@ const float irYcon[NUM_SENSORS] = {
     0.0000, -0.5000, -0.8660, -1.0000, -0.8660, -0.5000 
 };
 
-<<<<<<< HEAD
 long zeit, zeitA, zeitN, zeitH, zeitL, messungen, highs, lows, wechsel; //Benötigt für die Messung
 bool zustand; //Zustand des IR-Sensors HIGH/LOW
 =======
@@ -66,11 +63,8 @@ int irmove() {
 //--Nebenfunktionen von IRmove ------------------------
 
 void get_irValue() {
-<<<<<<< HEAD
     // Schleife über alle Sensorpins (2 bis 9 und 30 bis 33) (2 for-Schleiefen)
-=======
     // Schleife über alle Sensorpins (2 bis 9 und 30 bis 33)
->>>>>>> 6cbc0f656c87e51c22c3525a176c31ed5147b23b
   for (int i = 2; i <= 9; i++) {
     zeit = micros();
     zeitA = zeit;
@@ -143,8 +137,6 @@ void get_irValue() {
     irValue[sensorIndex] = zeitH / 13; //nur um den Wert niedrig zu halten
     zeit = micros() - zeit;
   }
-<<<<<<< HEAD
-=======
 
   rgb.setColor(0, 0,0,0);
   // Ausgabe aller 12 Sensorwerte
