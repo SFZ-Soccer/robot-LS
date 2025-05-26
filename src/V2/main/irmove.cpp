@@ -1,10 +1,7 @@
 #include <Arduino.h>
-#include <MeAuriga.h>
 #include "irmove.h"
 #include "tormove.h"
 #define NUM_SENSORS 12
-
-MeRGBLed rgb(0, 12);
 
 float irValue[NUM_SENSORS] = {0,0,0,0,0,0,0,0,0,0,0,0};  // Array für 12 Sensoren
 const float irXcon[NUM_SENSORS] = { 
@@ -25,9 +22,20 @@ float powerY = 0;
 float powerX = 0;
 
 int irmove() {
-    get_irValue();
-    get_irX();
-    get_irY();
+  powerY = 0;
+  powerX = 0;
+
+  get_irValue();
+  get_irX();
+  get_irY();
+
+  //Anzeigen der Werte im Serial Plotter
+  Serial.print("irX:");
+  Serial.println(powerX);
+  Serial.print("irY:");
+  Serial.println(powerY);
+  Serial.print("Null:");
+  Serial.println(0);
 }   
 
 //--Nebenfunktionen von IRmove ------------------------
@@ -107,22 +115,13 @@ void get_irValue() {
     zeit = micros() - zeit;
   }
 
-  rgb.setColor(0, 0,0,0);
   // Ausgabe aller 12 Sensorwerte
   for (int i = 0; i < NUM_SENSORS; i++) {
-    rgbRingPin = i + 1;
-    Serial.print("Sensor ");
-    Serial.print(rgbRingPin);
-    if(irValue[i] <= 140) {
-      rgb.setColor(rgbRingPin, 0,0,0);
-    } else {
-      rgb.setColor(rgbRingPin, irValue[i],0,0);
-    }
+    Serial.print("Sensor: ");
+    Serial.print(i);
     Serial.print(": ");
     Serial.println(irValue[i]);
   }
-
-  rgb.show();
 
   Serial.println("------------------------");
   delay(1);
