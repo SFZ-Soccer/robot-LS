@@ -16,8 +16,6 @@ const float irYcon[NUM_SENSORS] = {
 
 long zeit, zeitA, zeitN, zeitH, zeitL, messungen, highs, lows, wechsel; //Benötigt für die Messung
 bool zustand; //Zustand des IR-Sensors HIGH/LOW
-long zeit, zeitA, zeitN, zeitH, zeitL, messungen, highs, lows, wechsel;
-bool zustand;
 int rgbRingPin = 0;
 
 float powerY = 0; //Durschnittlicher Wert nach vorne/hinten berechnet aus den irWerten und den Constanten
