@@ -14,33 +14,38 @@ const float irYcon[NUM_SENSORS] = {
     0.0000, -0.5000, -0.8660, -1.0000, -0.8660, -0.5000 
 };
 
+long zeit, zeitA, zeitN, zeitH, zeitL, messungen, highs, lows, wechsel; //Benötigt für die Messung
+bool zustand; //Zustand des IR-Sensors HIGH/LOW
 long zeit, zeitA, zeitN, zeitH, zeitL, messungen, highs, lows, wechsel;
 bool zustand;
 int rgbRingPin = 0;
 
-float powerY = 0;
-float powerX = 0;
+float powerY = 0; //Durschnittlicher Wert nach vorne/hinten berechnet aus den irWerten und den Constanten
+float powerX = 0; //Durschnittlicher Wert nach links/rechts berechnet aus den irWerten und den Constanten
 
 int irmove() {
-  powerY = 0;
-  powerX = 0;
+    get_irValue(); //Ir Sensor Werte einmal Durchmessen
+    get_irX(); //powerX berechnen
+    get_irY(); //powerY berechnen
+    Serial.print("Null:"); //Serial Plotter ausgabe
+    Serial.print(0);
+    Serial.print(",");
+    Serial.print("X:");
+    Serial.print(powerX);
+    Serial.print(",");
+    Serial.print("Y:");
+    Serial.println(powerY);
 
-  get_irValue();
-  get_irX();
-  get_irY();
+    powerY = 0; // Zurücksetzen der Werte
+    powerX = 0;
 
-  //Anzeigen der Werte im Serial Plotter
-  Serial.print("irX:");
-  Serial.println(powerX);
-  Serial.print("irY:");
-  Serial.println(powerY);
-  Serial.print("Null:");
-  Serial.println(0);
+    delay(100); //Wartepause für die Lesbarkeit
 }   
 
 //--Nebenfunktionen von IRmove ------------------------
 
 void get_irValue() {
+    // Schleife über alle Sensorpins (2 bis 9 und 30 bis 33) (2 for-Schleiefen)
     // Schleife über alle Sensorpins (2 bis 9 und 30 bis 33)
   for (int i = 2; i <= 9; i++) {
     zeit = micros();
@@ -52,7 +57,7 @@ void get_irValue() {
     highs = 0;
     lows = 0;
     
-  zustand = digitalRead(i);
+    zustand = digitalRead(i);
   
 
     // Messe 10 Pegelwechsel am Sensorpin
@@ -128,17 +133,17 @@ void get_irValue() {
 }
 
 void get_irX() {
-    for (int i = 0; i < NUM_SENSORS; i++)
+    for (int i = 0; i < NUM_SENSORS; i++) //Berechnen des powerX Wertes aller 12 Sensoren
     {
-        powerX += irValue[i] * irXcon[i];
+        powerX += irValue[i] * irXcon[i]; //Der Wert des Sensors * den Einfluss des Sensors auf die X-Entfernung zum Ball (X-Constante)
     }
     powerX / NUM_SENSORS;
 }
 
 void get_irY() {
-    for (int i = 0; i < NUM_SENSORS; i++)
+    for (int i = 0; i < NUM_SENSORS; i++) //Berechnen des powerX Wertes aller 12 Sensoren
     {
-        powerY += irValue[i] * irYcon[i];
+        powerY += irValue[i] * irYcon[i]; //Der Wert des Sensors * den Einfluss des Sensors auf die Y-Entfernung zum Ball (Y-Constante)
     }
 
     powerY / NUM_SENSORS;

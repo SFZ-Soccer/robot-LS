@@ -1,18 +1,24 @@
 #include <Arduino.h>
 #include <MeAuriga.h>
-#include <Pixy2.h>
+//#include <Pixy2.h>
 #include "irmove.h"
-#include "tormove.h"
+//#include "tormove.h"
 
 MeEncoderOnBoard m1(SLOT1); // rechts
 MeEncoderOnBoard m2(SLOT2); // links
 
 //void move(int m1speed, int m2speed) {
+//void move(int m1speed, int m2speed) {
+
+void move(int m1speed, int m2speed) {
   //m1.setMotorPwm(m1speed * -1);
   //m2.setMotorPwm(m2speed);
   //m1dataspeed = m1speed;
   //m2dataspeed = m2speed;
 //}
+//}
+}
+
 
 //--Setup und Loop--------------------------------------------------
 
