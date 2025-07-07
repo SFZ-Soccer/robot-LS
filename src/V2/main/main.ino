@@ -5,6 +5,8 @@
 #include "anpassen.h"
 #include "tormove.h"
 
+#define relais_pin 41
+
 MeEncoderOnBoard m1(SLOT1); // rechts
 MeEncoderOnBoard m2(SLOT2); // links
 Pixy2 pixy;
@@ -39,9 +41,14 @@ void setup() {
 }
 
 void loop() {
-  irmove();
-
-  do {
+  digitalWrite(relais_pin, LOW);
+  Serial.println("Dribbler-OFF");
+  // Schleife läuft solange der Ball nicht erkannt wurde
+  while (true==false) { //!ballDetected()
     irmove();
-  } while (true==false); // Schleife läuft, solange die Bedingung erfüllt (also Ball in fangeinrichtung)
+    Serial.println("IR");
+  }
+
+  digitalWrite(relais_pin, HIGH);
+  Serial.println("Dribbler-ON");
 }
