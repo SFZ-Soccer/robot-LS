@@ -40,4 +40,8 @@ void setup() {
 
 void loop() {
   irmove();
+
+  do {
+    irmove();
+  } while (true==false); // Schleife läuft, solange die Bedingung erfüllt (also Ball in fangeinrichtung)
 }
