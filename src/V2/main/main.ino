@@ -11,14 +11,9 @@ MeEncoderOnBoard m1(SLOT1); // rechts
 MeEncoderOnBoard m2(SLOT2); // links
 Pixy2 pixy;
 
-//void move(int m1speed, int m2speed) {
-//void move(int m1speed, int m2speed) {
-
 void move(int m1speed, int m2speed) {
-  //m1.setMotorPwm(m1speed * -1);
-  //m2.setMotorPwm(m2speed);
-  //m1dataspeed = m1speed;
-  //m2dataspeed = m2speed;
+  m1.setMotorPwm(m1speed * l_speedfaktor * -1); //Seiten Stimmen nicht umbedingt
+  m2.setMotorPwm(m2speed * r_speedfaktor);
 }
 
 
@@ -41,7 +36,7 @@ void setup() {
 }
 
 void loop() {
-  digitalWrite(relais_pin, LOW);
+  //digitalWrite(relais_pin, LOW);
   Serial.println("Dribbler-OFF");
   // Schleife läuft solange der Ball nicht erkannt wurde
   while (true==false) { //!ballDetected()

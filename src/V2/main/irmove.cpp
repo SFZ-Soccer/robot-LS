@@ -36,7 +36,7 @@ int irmove() {
     powerY = 0; // Zurücksetzen der Werte
     powerX = 0;
 
-    delay(100); //Wartepause für die Lesbarkeit
+    //movement anhand von powerX und powerY
 }   
 
 //--Nebenfunktionen von IRmove ------------------------
