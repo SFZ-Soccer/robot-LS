@@ -1,6 +1,7 @@
 #include <Arduino.h>
 #include "irmove.h"
 #include "tormove.h"
+#include "main.h"
 #define NUM_SENSORS 12
 
 float irValue[NUM_SENSORS] = {0,0,0,0,0,0,0,0,0,0,0,0};  // Array für 12 Sensoren
@@ -37,6 +38,8 @@ int irmove() {
     powerX = 0;
 
     //movement anhand von powerX und powerY
+
+    move(100,100);
 }   
 
 //--Nebenfunktionen von IRmove ------------------------
