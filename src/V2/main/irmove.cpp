@@ -34,12 +34,10 @@ int irmove() {
     Serial.print("Y:");
     Serial.println(powerY);
 
+    driveToBall(powerX, powerY);
+
     powerY = 0; // Zurücksetzen der Werte
     powerX = 0;
-
-    //movement anhand von powerX und powerY
-
-    move(100,100);
 }   
 
 //--Nebenfunktionen von IRmove ------------------------
@@ -148,3 +146,27 @@ void get_irY() {
 
     powerY / NUM_SENSORS;
 }       
+
+void driveToBall(int powerX, int powerY) {
+    //einstellungen
+    float GAIN_FORWARD = 1.0;   // Vorwärtsverstärkung
+    float GAIN_TURN = 0.5;      // Drehverstärkung
+    float MAX_SPEED = 255.0;    // Maximalgeschwindigkeit für Motoren
+
+    //berechnung
+    float forward = GAIN_FORWARD * powerY;     // Geschwindigkeit nach vorne
+    float turn = GAIN_TURN * powerX;           // Drehung (positiv = rechts, negativ = links)
+
+    float leftMotor = forward - turn;          // Linker Motor
+    float rightMotor = forward + turn;         // Rechter Motor
+
+    //motorwerte
+    if (leftMotor > MAX_SPEED) leftMotor = MAX_SPEED;
+    if (leftMotor < -MAX_SPEED) leftMotor = -MAX_SPEED;
+
+    if (rightMotor > MAX_SPEED) rightMotor = MAX_SPEED;
+    if (rightMotor < -MAX_SPEED) rightMotor = -MAX_SPEED;
+
+    //bewegung ausführen
+    move((int)leftMotor, (int)rightMotor);
+}
