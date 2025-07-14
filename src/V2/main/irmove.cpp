@@ -150,7 +150,7 @@ void get_irY() {
 void driveToBall(int powerX, int powerY) {
     //einstellungen
     float GAIN_FORWARD = 1.0;   // Vorwärtsverstärkung
-    float GAIN_TURN = 0.5;      // Drehverstärkung
+    float GAIN_TURN = 1.0;      // Drehverstärkung
     float MAX_SPEED = 255.0;    // Maximalgeschwindigkeit für Motoren
 
     //berechnung
