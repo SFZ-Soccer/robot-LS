@@ -1,9 +1,7 @@
 #include "tormove.h"
-#include <Pixy2.h>
 #include <MeAuriga.h>
 #include <Wire.h>
 
-Pixy2 pixy;
 
 int torX;
 int torDeadzoneMin = 120; //200
@@ -12,7 +10,6 @@ int Drehen = 120; //75
 int Fahren = 220; //170
 
 void tormove(int torcolor) {
-  pixy.init();
   getTor(torcolor);
   moveTor();
 }

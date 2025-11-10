@@ -3,6 +3,7 @@
 #include "irmove.h"
 #include "anpassen.h"
 #include "tormove.h"
+#include <Pixy2.h>
 
 #define relais_pin 41
 
@@ -36,6 +37,7 @@ void isr_process_encoder2(void)
 //--Setup und Loop--------------------------------------------------
 
 void setup() {
+  pixy.init();
   Serial.begin(9600);
   //attachInterrupt(m1.getIntNum(), isr_process_encoder1, RISING);
   //attachInterrupt(m2.getIntNum(), isr_process_encoder2, RISING);
