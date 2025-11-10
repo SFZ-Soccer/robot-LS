@@ -7,6 +7,8 @@
 
 #define relais_pin 41
 
+Pixy2 pixy;
+
 MeEncoderOnBoard m1(SLOT1); // rechts
 MeEncoderOnBoard m2(SLOT2); // links
 

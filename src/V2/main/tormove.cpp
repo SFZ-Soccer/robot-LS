@@ -1,7 +1,7 @@
 #include "tormove.h"
 #include <MeAuriga.h>
 #include <Wire.h>
-
+#include <Pixy2.h>
 
 int torX;
 int torDeadzoneMin = 120; //200
