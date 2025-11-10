@@ -1,6 +1,5 @@
 #include <Arduino.h>
 #include <MeAuriga.h>
-#include <Pixy2.h>
 #include "irmove.h"
 #include "anpassen.h"
 #include "tormove.h"
@@ -9,7 +8,6 @@
 
 MeEncoderOnBoard m1(SLOT1); // rechts
 MeEncoderOnBoard m2(SLOT2); // links
-Pixy2 pixy;
 
 void move(int m1speed, int m2speed) { //ohne Encoder
   m1.setMotorPwm(m1speed * l_speedfaktor * -1); //Seiten Stimmen nicht unbedingt
@@ -39,7 +37,6 @@ void isr_process_encoder2(void)
 
 void setup() {
   Serial.begin(9600);
-  pixy.init();
   //attachInterrupt(m1.getIntNum(), isr_process_encoder1, RISING);
   //attachInterrupt(m2.getIntNum(), isr_process_encoder2, RISING);
 
