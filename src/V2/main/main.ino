@@ -1,8 +1,5 @@
 #include <Arduino.h>
 #include <MeAuriga.h>
-#include "irmove.h"
-#include "anpassen.h"
-#include "tormove.h"
 #include <Pixy2.h>
 
 #define relais_pin 41
@@ -13,8 +10,8 @@ MeEncoderOnBoard m1(SLOT1); // rechts
 MeEncoderOnBoard m2(SLOT2); // links
 
 void move(int m1speed, int m2speed) { //ohne Encoder
-  m1.setMotorPwm(m1speed * l_speedfaktor * -1); //Seiten Stimmen nicht unbedingt
-  m2.setMotorPwm(m2speed * r_speedfaktor);
+  m1.setMotorPwm(m1speed * 1 * -1); //Seiten Stimmen nicht unbedingt
+  m2.setMotorPwm(m2speed * 1); //speedfaktor gelöscht
 }
 
 void isr_process_encoder1(void)
