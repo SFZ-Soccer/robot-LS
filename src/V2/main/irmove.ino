@@ -142,9 +142,8 @@ void get_irY() {
     }
 
     powerY / NUM_SENSORS;
-}       
+}
 
 void driveToBall(int powerX, int powerY) {
     //einstellungen
-    
 }

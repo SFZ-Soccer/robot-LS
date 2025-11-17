@@ -3,10 +3,6 @@
 #include <Pixy2.h>
 
 int torX;
-int torDeadzoneMin = 120; //200
-int torDeadzoneMax = 220; //280
-int Drehen = 120; //75
-int Fahren = 220; //170
 
 void tormove(int torcolor) {
   getTor(torcolor);
