@@ -1,5 +1,8 @@
 //main
 
+const float speedfaktor_l = 1;
+const float speedfaktor_r = 1;
+
 //tormove
 
 int torDeadzoneMin = 120; //200

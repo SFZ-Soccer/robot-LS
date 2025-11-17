@@ -10,8 +10,8 @@ MeEncoderOnBoard m1(SLOT1); // rechts
 MeEncoderOnBoard m2(SLOT2); // links
 
 void move(int m1speed, int m2speed) { //ohne Encoder
-  m1.setMotorPwm(m1speed * 1 * -1); //Seiten Stimmen nicht unbedingt
-  m2.setMotorPwm(m2speed * 1); //speedfaktor gelöscht
+  m1.setMotorPwm(m1speed * speedfaktor_l * -1); //Seiten Stimmen nicht unbedingt
+  m2.setMotorPwm(m2speed * speedfaktor_r); //speedfaktor gelöscht
 }
 
 void isr_process_encoder1(void)
