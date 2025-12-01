@@ -77,7 +77,6 @@ void setup() {
 }
 
 void loop() {
-  digitalWrite(relais_pin, HIGH); //Dribbler
   while (digitalRead(startswitch_pin) == 1) {
     _loop(); //loop für Encoder
   
@@ -90,8 +89,6 @@ void loop() {
     } else {
       irmove();
     }
-
-
   }
 }
 
