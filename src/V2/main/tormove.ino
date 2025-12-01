@@ -4,7 +4,7 @@
 
 int torX;
 
-void tormove(int torcolor) {
+void tormove(int torcolor) { //1 = gelb; 2= blau
   getTor(torcolor);
   moveTor();
 }

@@ -72,16 +72,15 @@ void setup() {
 
 void loop() {
   _loop(); //loop für Encoder
-  //digitalWrite(relais_pin, LOW);
-  //Serial.println("Dribbler-OFF");
-  // Schleife läuft solange der Ball nicht erkannt wurde
-  //while (true==false) { //!ballDetected()
+  
+  if (true==true) { //!ballDetected()
+    tormove(); //1 = gelb; 2= blau
+  } else {
     irmove();
-    //Serial.println("IR");
-  //}
+  }
 
-  //digitalWrite(relais_pin, HIGH);
-  //Serial.println("Dribbler-ON");
+  digitalWrite(relais_pin, HIGH);
+  digitalWrite(relais_pin,LOW);
 }
 
 void _loop() {
