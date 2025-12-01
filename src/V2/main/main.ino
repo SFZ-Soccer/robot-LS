@@ -3,6 +3,8 @@
 #include <Pixy2.h>
 
 #define relais_pin 41
+#define startswitch_pin 10 //Pin stimmt noch nicht
+#define colorswitch_pin 5 //Pin stimmt noch nicht
 
 //------------------------------------------------------------------------------
 //main
@@ -68,19 +70,27 @@ void setup() {
   for (int i = 30; i <= 33; i++) {
     pinMode(i, INPUT);
   }
+
+  pinMode(startswitch_pin, INPUT); //Buttons als INPUT deffinieren
+  pinMode(colorswitch_pin, INPUT);
 }
 
 void loop() {
-  _loop(); //loop für Encoder
+  while (digitalRead(startswitch_pin) == 1) {
+    _loop(); //loop für Encoder
   
-  if (true==true) { //!ballDetected()
-    tormove(); //1 = gelb; 2= blau
-  } else {
-    irmove();
-  }
+    if (true==true) { //!ballDetected()
+      if (digitalRead(colorswitch_pin) == 1) { 
+        tormove(1); //gelb
+      } else if (digitalRead(colorswitch_pin) == 0) {
+        tormove(0); //blau
+      }
+    } else {
+      irmove();
+    }
 
-  digitalWrite(relais_pin, HIGH);
-  digitalWrite(relais_pin,LOW);
+    digitalWrite(relais_pin, HIGH);
+  }
 }
 
 void _loop() {
