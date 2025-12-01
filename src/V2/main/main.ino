@@ -73,9 +73,11 @@ void setup() {
 
   pinMode(startswitch_pin, INPUT); //Buttons als INPUT deffinieren
   pinMode(colorswitch_pin, INPUT);
+  pinMode(relais_pin, OUTPUT);
 }
 
 void loop() {
+  digitalWrite(relais_pin, HIGH); //Dribbler
   while (digitalRead(startswitch_pin) == 1) {
     _loop(); //loop für Encoder
   
@@ -89,7 +91,7 @@ void loop() {
       irmove();
     }
 
-    digitalWrite(relais_pin, HIGH); //Dribbler
+
   }
 }
 

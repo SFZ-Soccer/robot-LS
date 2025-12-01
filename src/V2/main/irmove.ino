@@ -152,7 +152,7 @@ void driveToBall(int powerX, int powerY) {
       //links
     } else if (powerX >= irDeadzoneMax_x) {
       //rechts
-    } else if (powerX >= irDeadzoneMin_x && powerX <= irDeadzoneMax_x) {
+    } else if (powerX >= irDeadzoneMin_x && powerX <= irDeadzoneMax_x) { 
       //geradeaus
     }
 }
