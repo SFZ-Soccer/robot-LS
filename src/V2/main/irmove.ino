@@ -1,6 +1,9 @@
 #include <Arduino.h>
 #define NUM_SENSORS 12
 
+int irDeadzoneMin_x = 120; //200
+int irDeadzoneMax_x = 220; //280
+
 float irValue[NUM_SENSORS] = {0,0,0,0,0,0,0,0,0,0,0,0};  // Array für 12 Sensoren
 const float irXcon[NUM_SENSORS] = { 
     1.0000, 0.8660, 0.5000, 0.0000, -0.5000, -0.8660, 
@@ -145,5 +148,11 @@ void get_irY() {
 }
 
 void driveToBall(int powerX, int powerY) {
-    //einstellungen
+    if (powerX <= irDeadzoneMin_x) {
+      //links
+    } else if (powerX >= irDeadzoneMax_x) {
+      //rechts
+    } else if (powerX >= irDeadzoneMin_x && powerX <= irDeadzoneMax_x) {
+      //geradeaus
+    }
 }

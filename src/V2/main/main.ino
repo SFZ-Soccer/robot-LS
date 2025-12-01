@@ -3,8 +3,8 @@
 #include <Pixy2.h>
 
 #define relais_pin 41
-#define startswitch_pin 10 //Pin stimmt noch nicht
-#define colorswitch_pin 5 //Pin stimmt noch nicht
+#define startswitch_pin 6 //Pin stimmt noch nicht
+#define colorswitch_pin 7 //Pin stimmt noch nicht
 
 //------------------------------------------------------------------------------
 //main
@@ -14,7 +14,7 @@ float speedfaktor_r = 1;
 
 //tormove
 
-int torcolor = 1; //1= gelb; 2= blau
+int torcolor; //1= gelb; 2= blau
 
 int torDeadzoneMin = 120; //200
 int torDeadzoneMax = 220; //280
@@ -89,7 +89,7 @@ void loop() {
       irmove();
     }
 
-    digitalWrite(relais_pin, HIGH);
+    digitalWrite(relais_pin, HIGH); //Dribbler
   }
 }
 
