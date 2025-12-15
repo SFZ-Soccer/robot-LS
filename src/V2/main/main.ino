@@ -3,6 +3,7 @@
 #include <Pixy2.h>
 
 #define relais_pin 41
+#define ldr_pin 66
 #define startswitch_pin 6 //Pin stimmt noch nicht
 #define colorswitch_pin 7 //Pin stimmt noch nicht
 
@@ -11,6 +12,8 @@
 
 float speedfaktor_l = 1;
 float speedfaktor_r = 1;
+int lichtWert = 0;
+const int ldr_schwelle = 970;
 
 //tormove
 
@@ -18,7 +21,7 @@ int torcolor; //1= gelb; 2= blau
 
 int torDeadzoneMin = 100; //200
 int torDeadzoneMax = 240; //280
-int Drehen = 120; //75
+int Drehen = 100; //75
 int Fahren = 220; //170
 
 //irmove 
@@ -74,22 +77,21 @@ void setup() {
   pinMode(startswitch_pin, INPUT); //Buttons als INPUT deffinieren
   pinMode(colorswitch_pin, INPUT);
   pinMode(relais_pin, OUTPUT);
+  pinMode(ldr_pin, INPUT);
 }
 
 void loop() {
-  //while (digitalRead(startswitch_pin) == 1) {
-    //_loop(); //loop für Encoder
-  
-    //if (true==true) { //!ballDetected()
-      //if (digitalRead(colorswitch_pin) == 1) { 
-        tormove(1); //gelb
-      //} else if (digitalRead(colorswitch_pin) == 0) {
-        //tormove(0); //blau
-      //}
-    //} else {
-      //irmove();
-    //}
-  //}
+  if(lichtWert > ldr_schwelle) {
+    irmove();
+    lichtWert = analogRead(ldr_pin);
+    Serial.println(lichtWert);
+    Serial.println("IR");
+  } else if (lichtWert < ldr_schwelle) {
+    tormove(1); //gelb
+    lichtWert = analogRead(ldr_pin);
+    Serial.println(lichtWert);
+    Serial.println("TOR");
+  }
 }
 
 void _loop() {

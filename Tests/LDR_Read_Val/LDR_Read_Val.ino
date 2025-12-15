@@ -1,4 +1,4 @@
-int lichtPin = A12;   
+#define lichtPin 66
 int lichtWert = 0;
 
 void setup() {
