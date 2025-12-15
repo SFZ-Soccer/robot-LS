@@ -16,12 +16,12 @@ float speedfaktor_r = 1;
 
 int torcolor; //1= gelb; 2= blau
 
-int torDeadzoneMin = 120; //200
-int torDeadzoneMax = 220; //280
+int torDeadzoneMin = 100; //200
+int torDeadzoneMax = 240; //280
 int Drehen = 120; //75
 int Fahren = 220; //170
 
-//irmove
+//irmove 
 
 
 
@@ -77,19 +77,19 @@ void setup() {
 }
 
 void loop() {
-  while (digitalRead(startswitch_pin) == 1) {
-    _loop(); //loop für Encoder
+  //while (digitalRead(startswitch_pin) == 1) {
+    //_loop(); //loop für Encoder
   
-    if (true==true) { //!ballDetected()
-      if (digitalRead(colorswitch_pin) == 1) { 
+    //if (true==true) { //!ballDetected()
+      //if (digitalRead(colorswitch_pin) == 1) { 
         tormove(1); //gelb
-      } else if (digitalRead(colorswitch_pin) == 0) {
-        tormove(0); //blau
-      }
-    } else {
-      irmove();
-    }
-  }
+      //} else if (digitalRead(colorswitch_pin) == 0) {
+        //tormove(0); //blau
+      //}
+    //} else {
+      //irmove();
+    //}
+  //}
 }
 
 void _loop() {
