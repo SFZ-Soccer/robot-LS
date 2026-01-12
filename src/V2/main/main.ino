@@ -12,7 +12,7 @@
 
 float speedfaktor_l = 1;
 float speedfaktor_r = 1;
-int lichtWert = 0;
+int lichtWert = 1000;
 const int ldr_schwelle = 970;
 
 //tormove
@@ -81,18 +81,18 @@ void setup() {
 }
 
 void loop() {
-  if(lichtWert > ldr_schwelle) {
+  lichtWert = analogRead(ldr_pin);
+
+  if (lichtWert > ldr_schwelle) {
     irmove();
-    lichtWert = analogRead(ldr_pin);
-    Serial.println(lichtWert);
     Serial.println("IR");
-  } else if (lichtWert < ldr_schwelle) {
-    tormove(1); //gelb
-    lichtWert = analogRead(ldr_pin);
-    Serial.println(lichtWert);
+  } else {
+    tormove(1);
     Serial.println("TOR");
   }
 }
+
+
 
 void _loop() {
   m1.loop();
