@@ -4,8 +4,9 @@
 
 #define relais_pin 41
 #define ldr_pin 66
-#define startswitch_pin 6 //Pin stimmt noch nicht
-#define colorswitch_pin 7 //Pin stimmt noch nicht
+#define startswitch_pin_grun A15 
+#define startswitch_pin_rot A9 
+#define colorswitch_pin A10 
 
 //------------------------------------------------------------------------------
 //main
