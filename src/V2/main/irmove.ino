@@ -134,13 +134,12 @@ void get_irY() {
 // -------------------------------------------------
 
 void driveToBall() {
-    if (powerX < irDeadzoneMin_x) {
-        move(100,0);
-    } 
-    else if (powerX > irDeadzoneMax_x) {
-        move(0,100);
-    } 
-    else {
-        move(100,100);
-    }
+    //N 
+    //NO
+    //O
+    //SO
+    //S
+    //SW
+    //W
+    //NW
 }
