@@ -6,10 +6,10 @@ void setup() {
 }
 
 void loop() {
-  Serial.println(analogRead(colorswitch_pin));
-  /*if(analogRead(colorswitch_pin) <= 500) {
+  //Serial.println(analogRead(colorswitch_pin));
+  if(analogRead(colorswitch_pin) == HIGH) {
     Serial.println("HIGH");
   } else {
     Serial.println("LOW");
-  }*/
+  }
 }

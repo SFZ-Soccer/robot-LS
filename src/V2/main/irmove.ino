@@ -7,12 +7,12 @@ int irDeadzoneMax_x = 220;
 
 float irValue[NUM_SENSORS] = {0};
 
-const float irXcon[NUM_SENSORS] = { 
+const float irYcon[NUM_SENSORS] = { 
     1.0000, 0.8660, 0.5000, 0.0000, -0.5000, -0.8660, 
    -1.0000, -0.8660, -0.5000, -0.0000,  0.5000,  0.8660 
 };
 
-const float irYcon[NUM_SENSORS] = { 
+const float irXcon[NUM_SENSORS] = { 
     0.0000,  0.5000,  0.8660,  1.0000,  0.8660,  0.5000, 
     0.0000, -0.5000, -0.8660, -1.0000, -0.8660, -0.5000 
 };
@@ -32,14 +32,13 @@ int irmove() {
     get_irX();
     get_irY();
 
-    Serial.print("Null,");
     Serial.print("X:");
     Serial.print(powerX);
     Serial.print(",");
     Serial.print("Y:");
     Serial.println(powerY);
 
-    driveToBall(powerX, powerY);
+    driveToBall();
 
     powerX = 0;
     powerY = 0;
@@ -105,14 +104,15 @@ void get_irValue() {
     irValue[sensorIndex] = zeitH / 13.0;
   }
 
-  // Debug-Ausgabe
+  // Debug-Ausgabe 
+  
   for (int i = 0; i < NUM_SENSORS; i++) {
     Serial.print("Sensor ");
     Serial.print(i);
     Serial.print(": ");
     Serial.println(irValue[i]);
   }
-  Serial.println("------------------------");
+  Serial.println("------------------------"); 
 }
 
 // -------------------------------------------------
@@ -121,26 +121,26 @@ void get_irX() {
     for (int i = 0; i < NUM_SENSORS; i++) {
         powerX += irValue[i] * irXcon[i];
     }
-    powerX /= NUM_SENSORS;
+    powerX / NUM_SENSORS;
 }
 
 void get_irY() {
     for (int i = 0; i < NUM_SENSORS; i++) {
         powerY += irValue[i] * irYcon[i];
     }
-    powerY /= NUM_SENSORS;
+    powerY / NUM_SENSORS;
 }
 
 // -------------------------------------------------
 
-void driveToBall(float powerX, float powerY) {
+void driveToBall() {
     if (powerX < irDeadzoneMin_x) {
-        // links
+        move(100,0);
     } 
     else if (powerX > irDeadzoneMax_x) {
-        // rechts
+        move(0,100);
     } 
     else {
-        // geradeaus
+        move(100,100);
     }
 }

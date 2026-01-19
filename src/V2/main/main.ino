@@ -75,7 +75,8 @@ void setup() {
     pinMode(i, INPUT);
   }
 
-  pinMode(startswitch_pin, INPUT); //Buttons als INPUT deffinieren
+  pinMode(startswitch_pin_grun, INPUT); //Buttons als INPUT deffinieren
+  pinMode(startswitch_pin_rot, INPUT);
   pinMode(colorswitch_pin, INPUT);
   pinMode(relais_pin, OUTPUT);
   pinMode(ldr_pin, INPUT);
