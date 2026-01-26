@@ -148,36 +148,46 @@ void get_irY() {
 // -------------------------------------------------
 
 void driveToBall() {
+    //move(rechts,links)
+    int speed = 150;
+
     if(powerX < x0p && powerX > x0m && powerY > 0) { //N //y++ //x0 X
       //N
-      move(r,l);
+      move(speed *1,speed *1);
     }
 
     if(powerX < xp && powerX > x0p && powerY > 0) { //NO //y+ //x+ X
       //NO
+      move(speed * 0.5,speed *1);
     }
 
     if(powerX > xp && powerY > y0m && powerY < y0p) { //O //y0 //x++ X
       //O
+      move(speed * 0, speed *1);
     }
 
     if(powerX > x0p && powerX < xp && powerY < 0) { { //SO //y- //x+ X
       //SO
+      move(speed *-0.5, speed *1);
     }
 
     if(powerX < x0p && powerX > x0m && powerY < 0) { //S //y-- //x0 X
       //S
+      move(speed *1,speed *-1);
     }
 
     if(powerX < x0m && powerX > xm && powerY < 0) { //SW //y- //x-   X
       //SW
+      move(speed *1,speed * -0.5);
     }
  
     if(powerX < xm && powerY > y0m && powerY < y0p) { //W //y0 //x-- X
       //W
+      move(speed *1,speed * 0);
     }
 
     if(powerX < x0m && powerX > xm  && powerY > 0) { //NW //y+ //x- X
       //NW
+      move(speed *1,speed * 0.5);
     }
 }
