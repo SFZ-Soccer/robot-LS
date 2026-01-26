@@ -5,6 +5,20 @@
 int irDeadzoneMin_x = 120;
 int irDeadzoneMax_x = 220;
 
+const int xm = -120;
+const int x0m = -60;
+//0
+const int x0p = 60;
+const int xp = 120;
+
+//---------------
+
+const int ym = -120;
+const int y0m = -60;
+//0
+const int y0p = 60;
+const int yp = 120;
+
 float irValue[NUM_SENSORS] = {0};
 
 const float irYcon[NUM_SENSORS] = { 
@@ -134,12 +148,36 @@ void get_irY() {
 // -------------------------------------------------
 
 void driveToBall() {
-    //N 
-    //NO
-    //O
-    //SO
-    //S
-    //SW
-    //W
-    //NW
+    if(powerX < x0p && powerX > x0m && powerY > 0) { //N //y++ //x0 X
+      //N
+      move(r,l);
+    }
+
+    if(powerX < xp && powerX > x0p && powerY > 0) { //NO //y+ //x+ X
+      //NO
+    }
+
+    if(powerX > xp && powerY > y0m && powerY < y0p) { //O //y0 //x++ X
+      //O
+    }
+
+    if(powerX > x0p && powerX < xp && powerY < 0) { { //SO //y- //x+ X
+      //SO
+    }
+
+    if(powerX < x0p && powerX > x0m && powerY < 0) { //S //y-- //x0 X
+      //S
+    }
+
+    if(powerX < x0m && powerX > xm && powerY < 0) { //SW //y- //x-   X
+      //SW
+    }
+ 
+    if(powerX < xm && powerY > y0m && powerY < y0p) { //W //y0 //x-- X
+      //W
+    }
+
+    if(powerX < x0m && powerX > xm  && powerY > 0) { //NW //y+ //x- X
+      //NW
+    }
 }
