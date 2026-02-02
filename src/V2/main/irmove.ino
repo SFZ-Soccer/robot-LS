@@ -1,4 +1,3 @@
-#include <Arduino.h>
 
 #define NUM_SENSORS 12
 
@@ -166,7 +165,7 @@ void driveToBall() {
       move(speed * 0, speed *1);
     }
 
-    if(powerX > x0p && powerX < xp && powerY < 0) { { //SO //y- //x+ X
+    if(powerX > x0p && powerX < xp && powerY < 0) {  //SO //y- //x+ X
       //SO
       move(speed *-0.5, speed *1);
     }
@@ -180,7 +179,7 @@ void driveToBall() {
       //SW
       move(speed *1,speed * -0.5);
     }
- 
+
     if(powerX < xm && powerY > y0m && powerY < y0p) { //W //y0 //x-- X
       //W
       move(speed *1,speed * 0);

@@ -2,7 +2,7 @@
 #include <MeAuriga.h>
 #include <Pixy2.h>
 
-#define relais_pin 41
+#define relais_pin 41 //stimmt nicht
 #define ldr_pin 66
 #define startswitch_pin_grun A15 
 #define startswitch_pin_rot A9 

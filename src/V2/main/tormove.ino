@@ -1,6 +1,3 @@
-#include <MeAuriga.h>
-#include <Wire.h>
-#include <Pixy2.h>
 
 int torX;
 
