@@ -14,9 +14,6 @@ Der Roboter kann anhand von IR-Sensoren dem Ball folgen und über die Pixy2 Kame
 - [Funktionen](#funktionen)  
 - [Hardware](#hardware)  
 - [Softwarestruktur](#softwarestruktur)  
-- [Installation](#installation)  
-- [Nutzung](#nutzung)  
-- [Lizenz](#lizenz)
 
 ---
 
