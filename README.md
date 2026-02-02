@@ -13,7 +13,8 @@ Der Roboter kann anhand von IR-Sensoren dem Ball folgen und über die Pixy2 Kame
 
 - [Funktionen](#funktionen)  
 - [Hardware](#hardware)  
-- [Softwarestruktur](#softwarestruktur)  
+- [Softwarestruktur](#softwarestruktur)
+- [Nutzungsbedingungen](#nutzungsbedingungen)
 
 ---
 
@@ -187,6 +188,49 @@ void moveTor() {
 
 **Hinweis:**  
 Die Pixy2-Kamera liefert kontinuierlich Blockdaten. Das Modul prüft in jedem Durchlauf, ob ein passender Block erkannt wurde, und passt die Fahrtrichtung des Roboters dynamisch an.
+
+
+
+# Nutzungsbedingungen
+
+Dieses Dokument beschreibt die Nutzungsbedingungen dieses Projekts
+abhängig von der jeweiligen Version.
+
+##  Nutzungsbedingungen nach Version
+
+###  Version 1 (V1)
+
+Version 1 dieses Projekts ist **frei nutzbar**.
+
+Für V1 gilt:
+- ✅ Private und kommerzielle Nutzung erlaubt
+- ✅ Nutzung für Wettbewerbe (inkl. RoboCup) erlaubt
+- ✅ Code darf kopiert, verändert und weiterverwendet werden
+- ✅ Nutzung als Grundlage für eigene Projekte erlaubt
+
+> Kurz gesagt: **Mit Version 1 darf alles gemacht werden.**
+
+---
+
+###  Version 2 (V2)
+
+Version 2 unterliegt **eingeschränkten Nutzungsbedingungen**.
+
+Für V2 gilt:
+- ❌ Der Code darf **nicht kopiert** oder direkt übernommen werden
+- ❌ Der Code darf **nicht für RoboCup oder andere Wettbewerbe** verwendet werden
+- ✅ Private Nutzung ist erlaubt
+- ✅ Der Code darf **als Inspiration oder Lernhilfe** für einen eigenen RoboCup-Roboter verwendet werden  
+  (keine direkte Übernahme von Code, Modulen oder Algorithmen)
+
+Bei Verstößen gegen diese Nutzungsbedingungen behält sich der Projektinhaber
+entsprechende Schritte vor.
+
+---
+
+Vielen Dank für die faire Nutzung dieses Projekts 🙌
+Eurer Team 
+Luka & Simon
 
 
 
