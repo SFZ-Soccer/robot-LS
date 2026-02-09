@@ -11,7 +11,7 @@
 //------------------------------------------------------------------------------
 //main
 
-float speedfaktor_l = 1;
+float speedfaktor_l = 0.75;
 float speedfaktor_r = 1;
 int lichtWert = 1000;
 const int ldr_schwelle = 970;
@@ -33,8 +33,8 @@ MeEncoderOnBoard m1(SLOT1); // rechts
 MeEncoderOnBoard m2(SLOT2); // links
 
 void move(int m1speed, int m2speed) { //ohne Encoder //rechts, links
-  m1.setMotorPwm(m1speed * speedfaktor_l * -1); //Seiten Stimmen nicht unbedingt
-  m2.setMotorPwm(m2speed * speedfaktor_r); //speedfaktor gelöscht
+  m1.setMotorPwm(m1speed * speedfaktor_r * -1);
+  m2.setMotorPwm(m2speed * speedfaktor_l); 
 }
 
 void isr_process_encoder1(void)
