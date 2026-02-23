@@ -134,14 +134,14 @@ void get_irX() {
     for (int i = 0; i < NUM_SENSORS; i++) {
         powerX += irValue[i] * irXcon[i];
     }
-    powerX / NUM_SENSORS;
+    powerX = powerX / NUM_SENSORS;
 }
 
 void get_irY() {
     for (int i = 0; i < NUM_SENSORS; i++) {
         powerY += irValue[i] * irYcon[i];
     }
-    powerY / NUM_SENSORS;
+    powerY = powerY / NUM_SENSORS;
 }
 
 // -------------------------------------------------
