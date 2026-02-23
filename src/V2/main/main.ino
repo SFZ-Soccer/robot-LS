@@ -4,14 +4,15 @@
 
 #define relais_pin A11 //stimmt nicht
 #define ldr_pin 66
-#define startswitch_pin_grun 40
+#define startswitch_pin_grun 44
 #define startswitch_pin_rot 41 
-#define colorswitch_pin 44
+#define colorswitch_pin 40
 
 //------------------------------------------------------------------------------
 //main
 
 float speedfaktor_l = 0.75;
+bool program_run = false;
 float speedfaktor_r = 1;
 int lichtWert = 1000;
 const int ldr_schwelle = 970;
@@ -73,22 +74,41 @@ void setup() {
     pinMode(i, INPUT);
   }
 
-  pinMode(startswitch_pin_grun, INPUT); //Buttons als INPUT deffinieren
-  pinMode(startswitch_pin_rot, INPUT);
+  pinMode(startswitch_pin_grun, INPUT_PULLUP); //Buttons als INPUT deffinieren
+  pinMode(startswitch_pin_rot, INPUT_PULLUP);
   pinMode(colorswitch_pin, INPUT);
   pinMode(relais_pin, OUTPUT);
   pinMode(ldr_pin, INPUT);
 }
 
 void loop() {
-  lichtWert = analogRead(ldr_pin);
+  Serial.println("NO RUUUNN");
+  move(0,0);
 
-  if (lichtWert > ldr_schwelle) {
-    irmove();
-    Serial.println("IR");
-  } else {
-    tormove(1);
-    Serial.println("TOR");
+  if(digitalRead(startswitch_pin_grun) == 1) {
+      program_run = true;
+    } else if (digitalRead(startswitch_pin_rot) == 1) {
+      program_run = false;
+    }
+
+  
+  while(program_run == true) {
+    if(digitalRead(startswitch_pin_grun) == 1) {
+      program_run = true;
+    } else if (digitalRead(startswitch_pin_rot) == 1) {
+      program_run = false;
+    }
+
+    Serial.println("RUN");
+    lichtWert = analogRead(ldr_pin);
+
+    if (lichtWert > ldr_schwelle) {
+      irmove();
+      Serial.println("IR");
+    } else {
+      tormove(1);
+      Serial.println("TOR");
+    }
   }
 }
 
