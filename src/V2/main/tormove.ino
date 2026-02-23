@@ -9,7 +9,7 @@ void tormove(int torcolor) { //1 = gelb; 2= blau
 //--Nebenfunktionen von tormove------------------
 
 void getTor(int torcolor) {
- if(torcolor == 1) { //gelb
+ if(torcolor == 1) { //blau
     pixy.ccc.getBlocks();
   // Wenn Blöcke erkannt wurden (mindestens ein Block)
   if (pixy.ccc.numBlocks) { 
@@ -26,7 +26,7 @@ void getTor(int torcolor) {
 
     }
   }  
-  } else if(torcolor == 2) { //blau
+  } else if(torcolor == 2) { //gelb
     pixy.ccc.getBlocks();
     // Wenn Blöcke erkannt wurden (mindestens ein Block)
     if (pixy.ccc.numBlocks) {

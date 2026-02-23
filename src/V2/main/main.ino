@@ -19,7 +19,7 @@ const int ldr_schwelle = 970;
 
 //tormove
 
-int torcolor; //1= gelb; 2= blau
+int torcolor; //1= blau; 2= gelb //signature
 
 int torDeadzoneMin = 100; //200
 int torDeadzoneMax = 240; //280
@@ -87,6 +87,11 @@ void loop() {
 
   if(digitalRead(startswitch_pin_grun) == 1) {
       program_run = true;
+      if(colorswitch_pin == 1) { //blau
+        torcolor = 1;
+      } else if (colorswitch_pin == 0) {
+        torcolor = 2;
+      }
     } else if (digitalRead(startswitch_pin_rot) == 1) {
       program_run = false;
     }
@@ -106,7 +111,7 @@ void loop() {
       irmove();
       Serial.println("IR");
     } else {
-      tormove(1);
+      tormove(torcolor);
       Serial.println("TOR");
     }
   }
