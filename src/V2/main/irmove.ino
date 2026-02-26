@@ -1,4 +1,3 @@
-
 #define NUM_SENSORS 12
 
 int irDeadzoneMin_x = 120;
