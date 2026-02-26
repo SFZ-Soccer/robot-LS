@@ -4,19 +4,19 @@
 int irDeadzoneMin_x = 120;
 int irDeadzoneMax_x = 220;
 
-const int xm = -120 / 12;
-const int x0m = -60 / 12;
+const int xm = -120 / NUM_SENSORS;
+const int x0m = -60 / NUM_SENSORS;
 //0
-const int x0p = 60 / 12;
-const int xp = 120 / 12;
+const int x0p = 60 / NUM_SENSORS;
+const int xp = 120 / NUM_SENSORS;
 
 //---------------
 
-const int ym = -120 / 12;
-const int y0m = -60 / 12;
+const int ym = -120 / NUM_SENSORS;
+const int y0m = -60 / NUM_SENSORS;
 //0
-const int y0p = 60 / 12;
-const int yp = 120 / 12;
+const int y0p = 60 / NUM_SENSORS;
+const int yp = 120 / NUM_SENSORS;
 
 int speed = 255;
 
