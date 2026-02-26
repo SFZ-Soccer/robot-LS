@@ -4,19 +4,27 @@
 int irDeadzoneMin_x = 120;
 int irDeadzoneMax_x = 220;
 
-const int xm = -120;
-const int x0m = -60;
+const int xm = -120 / 12;
+const int x0m = -60 / 12;
 //0
-const int x0p = 60;
-const int xp = 120;
+const int x0p = 60 / 12;
+const int xp = 120 / 12;
 
 //---------------
 
-const int ym = -120;
-const int y0m = -60;
+const int ym = -120 / 12;
+const int y0m = -60 / 12;
 //0
-const int y0p = 60;
-const int yp = 120;
+const int y0p = 60 / 12;
+const int yp = 120 / 12;
+
+int speed = 255;
+
+float vorne = 0.7;
+float hinten = 0.5;
+float vorneseite = 0.18;
+float seite = 0.3;
+float hintenseite = 0.4;
 
 float irValue[NUM_SENSORS] = {0};
 
@@ -148,14 +156,6 @@ void get_irY() {
 
 void driveToBall() {
     //move(rechts,links)
-    int speed = 255;
-
-    float vorne = 0.7;
-    float hinten = 0.7;
-    float vorneseite = 0.3;
-    float seite = 0.4;
-    float hintenseite = 0.6;
-
 
     if(powerX < x0p && powerX > x0m && powerY > 0) { //N //y++ //x0 X
       //N

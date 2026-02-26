@@ -87,9 +87,9 @@ void loop() {
 
   if(digitalRead(startswitch_pin_grun) == 1) {
       program_run = true;
-      if(colorswitch_pin == 1) { //blau
+      if(digitalRead(colorswitch_pin) == 1) { //blau
         torcolor = 1;
-      } else if (colorswitch_pin == 0) {
+      } else if (digitalRead(colorswitch_pin) == 0) {
         torcolor = 2;
       }
     } else if (digitalRead(startswitch_pin_rot) == 1) {

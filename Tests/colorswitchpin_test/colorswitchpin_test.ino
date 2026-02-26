@@ -1,4 +1,4 @@
-#define colorswitch_pin A10
+#define colorswitch_pin 40
 
 void setup() {
   pinMode(colorswitch_pin, INPUT);
@@ -7,7 +7,7 @@ void setup() {
 
 void loop() {
   //Serial.println(analogRead(colorswitch_pin));
-  if(analogRead(colorswitch_pin) == HIGH) {
+  if(digitalRead(colorswitch_pin) == 1) {
     Serial.println("HIGH");
   } else {
     Serial.println("LOW");
