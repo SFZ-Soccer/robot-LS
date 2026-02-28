@@ -2,7 +2,7 @@
 #include <MeAuriga.h>
 #include <Pixy2.h>
 
-#define relais_pin A11 //stimmt nicht
+#define relais_pin A11
 #define ldr_pin 66
 #define startswitch_pin_grun 44
 #define startswitch_pin_rot 41 
@@ -11,7 +11,7 @@
 //------------------------------------------------------------------------------
 //main
 
-float speedfaktor_l = 0.75;
+float speedfaktor_l = 0.95;
 bool program_run = false;
 float speedfaktor_r = 1;
 int lichtWert = 1000;
@@ -61,7 +61,7 @@ void isr_process_encoder2(void)
 
 void setup() {
   pixy.init();
-  Serial.begin(9600);
+  Serial.begin(19200);
   //attachInterrupt(m1.getIntNum(), isr_process_encoder1, RISING);
   //attachInterrupt(m2.getIntNum(), isr_process_encoder2, RISING);
 
@@ -94,6 +94,7 @@ void loop() {
       }
     } else if (digitalRead(startswitch_pin_rot) == 1) {
       program_run = false;
+      analogWrite(relais_pin, 0); 
     }
 
   
@@ -102,6 +103,7 @@ void loop() {
       program_run = true;
     } else if (digitalRead(startswitch_pin_rot) == 1) {
       program_run = false;
+      analogWrite(relais_pin, 0); 
     }
 
     Serial.println("RUN");
@@ -109,9 +111,11 @@ void loop() {
 
     if (lichtWert > ldr_schwelle) {
       irmove();
+      analogWrite(relais_pin, 200); 
       Serial.println("IR");
     } else {
       tormove(torcolor);
+      analogWrite(relais_pin, 255); //Dribbler an
       Serial.println("TOR");
     }
   }

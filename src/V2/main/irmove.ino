@@ -3,26 +3,26 @@
 int irDeadzoneMin_x = 120;
 int irDeadzoneMax_x = 220;
 
-const int xm = -120 / NUM_SENSORS;
-const int x0m = -60 / NUM_SENSORS;
+const int xm = -14;
+const int x0m = -8;
 //0
-const int x0p = 60 / NUM_SENSORS;
-const int xp = 120 / NUM_SENSORS;
+const int x0p = 8;
+const int xp = 14;
 
 //---------------
 
-const int ym = -120 / NUM_SENSORS;
-const int y0m = -60 / NUM_SENSORS;
+const int ym = -14;
+const int y0m = -8;
 //0
-const int y0p = 60 / NUM_SENSORS;
-const int yp = 120 / NUM_SENSORS;
+const int y0p = 8;
+const int yp = 9;
 
 int speed = 255;
 
-float vorne = 0.7;
+float vorne = 0.6;
 float hinten = 0.5;
-float vorneseite = 0.18;
-float seite = 0.3;
+float vorneseite = 0.19;
+float seite = 0.27;
 float hintenseite = 0.4;
 
 float irValue[NUM_SENSORS] = {0};
