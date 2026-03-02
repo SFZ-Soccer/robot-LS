@@ -8,6 +8,11 @@
 #define startswitch_pin_rot 41 
 #define colorswitch_pin 40
 
+#define TRIG_PIN_links A13
+#define ECHO_PIN_links A7
+#define TRIG_PIN_rechts A14
+#define ECHO_PIN_rechts A8
+
 //------------------------------------------------------------------------------
 //main
 
@@ -38,6 +43,58 @@ void move(int m1speed, int m2speed) { //ohne Encoder //rechts, links
   m2.setMotorPwm(m2speed * speedfaktor_l); 
 }
 
+int get_ultra_distance_links() { 
+  digitalWrite(TRIG_PIN_links, LOW);
+  delayMicroseconds(2);
+  digitalWrite(TRIG_PIN_links, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(TRIG_PIN_links, LOW);
+
+  // Echo-Zeit messen
+  long duration = pulseIn(ECHO_PIN_links, HIGH);
+
+  // Entfernung berechnen
+  float distance = (duration * 0.0343) / 2;
+  /*
+  Serial.print("Entfernung: ");
+  Serial.print(distance);
+  Serial.println(" cm");
+  */
+
+  return distance;
+}
+
+int get_ultra_distance_rechts() { 
+  digitalWrite(TRIG_PIN_rechts, LOW);
+  delayMicroseconds(2);
+  digitalWrite(TRIG_PIN_rechts, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(TRIG_PIN_rechts, LOW);
+
+  // Echo-Zeit messen
+  long duration = pulseIn(ECHO_PIN_rechts, HIGH);
+
+  // Entfernung berechnen
+  float distance = (duration * 0.0343) / 2;
+  /*
+  Serial.print("Entfernung: ");
+  Serial.print(distance);
+  Serial.println(" cm");
+  */
+
+  return distance;
+}
+
+void change_dir(int mode) {
+  if (mode == 1) { //mit Ball schlecht
+    move(-200, -200);
+  }
+
+  if (mode == 2) { //
+  
+  }
+}
+
 void isr_process_encoder1(void)
 {
       if(digitalRead(m1.getPortB()) == 0){
@@ -61,12 +118,11 @@ void isr_process_encoder2(void)
 
 void setup() {
   pixy.init();
-  Serial.begin(19200);
+  Serial.begin(9200);
   pixy.setLamp(false, false);
-  //attachInterrupt(m1.getIntNum(), isr_process_encoder1, RISING);
-  //attachInterrupt(m2.getIntNum(), isr_process_encoder2, RISING);
+  attachInterrupt(m1.getIntNum(), isr_process_encoder1, RISING);
+  attachInterrupt(m2.getIntNum(), isr_process_encoder2, RISING);
 
-  //rgb.setpin(44);
   // Setze die Pins (2 bis 9, 30 bis 33) als Eingang für die IR-Sensoren
   for (int i = 2; i <= 9; i++) {
     pinMode(i, INPUT);
@@ -80,6 +136,11 @@ void setup() {
   pinMode(colorswitch_pin, INPUT);
   pinMode(relais_pin, OUTPUT);
   pinMode(ldr_pin, INPUT);
+
+  pinMode(TRIG_PIN_rechts, OUTPUT);
+  pinMode(ECHO_PIN_rechts, INPUT);
+  pinMode(TRIG_PIN_links, OUTPUT);
+  pinMode(ECHO_PIN_links, INPUT);
 }
 
 void loop() {
@@ -100,7 +161,13 @@ void loop() {
 
   
   while(program_run == true) {
-    //_loop();
+
+    Serial.print("Spped 1:");
+    Serial.print(m1.getCurrentSpeed());
+    Serial.print(" ,Spped 2:");
+    Serial.println(m2.getCurrentSpeed());
+
+    _loop(); //für Encoder
     if(digitalRead(startswitch_pin_grun) == 1) {
       program_run = true;
     } else if (digitalRead(startswitch_pin_rot) == 1) {
@@ -122,7 +189,6 @@ void loop() {
     }
   }
 }
-
 
 
 void _loop() {
