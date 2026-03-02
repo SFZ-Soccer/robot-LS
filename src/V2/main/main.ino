@@ -10,8 +10,8 @@
 
 #define TRIG_PIN_links A13
 #define ECHO_PIN_links A7
-#define TRIG_PIN_rechts A14
-#define ECHO_PIN_rechts A8
+#define TRIG_PIN_rechts A8
+#define ECHO_PIN_rechts A14
 
 //------------------------------------------------------------------------------
 //main
@@ -86,8 +86,17 @@ int get_ultra_distance_rechts() {
 }
 
 void change_dir(int mode) {
-  if (mode == 1) { //mit Ball schlecht
-    move(-200, -200);
+  //move(rechts, links)
+  if (mode == 1) { //fahre zu ultraschall größer
+    if(get_ultra_distance_links() > get_ultra_distance_rechts()) {
+      //drehung links
+      move(-200,200);
+      delay(600);
+    } else if(get_ultra_distance_rechts() > get_ultra_distance_links()) {
+      //drehung rechts
+      move(200,-200);
+      delay(600);
+    }
   }
 
   if (mode == 2) { //

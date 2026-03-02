@@ -1,7 +1,7 @@
 #define TRIG_PIN_links A13
 #define ECHO_PIN_links A7
-#define TRIG_PIN_rechts A14
-#define ECHO_PIN_rechts A8
+#define TRIG_PIN_rechts A8
+#define ECHO_PIN_rechts A14
 
 int get_ultra_distance_links() { 
   digitalWrite(TRIG_PIN_links, LOW);
