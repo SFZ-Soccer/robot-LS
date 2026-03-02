@@ -104,6 +104,14 @@ void change_dir(int mode) {
   }
 }
 
+void check_movement(int programmstatus) {
+  //1=irmove
+  //2=tormove
+  if(m1.getCurrentSpeed() <= 10 && m2.getCurrentSpeed() <= 10) {
+    change_dir(1);
+  }
+}
+
 void isr_process_encoder1(void)
 {
       if(digitalRead(m1.getPortB()) == 0){
@@ -188,10 +196,12 @@ void loop() {
     lichtWert = analogRead(ldr_pin);
 
     if (lichtWert > ldr_schwelle) {
+      check_movement(1);
       irmove();
       analogWrite(relais_pin, 200); 
       Serial.println("IR");
     } else {
+      check_movement(2);
       tormove(torcolor);
       analogWrite(relais_pin, 255); //Dribbler an
       Serial.println("TOR");
