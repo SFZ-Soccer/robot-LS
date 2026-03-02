@@ -23,8 +23,8 @@ int torcolor; //1= blau; 2= gelb //signature
 
 int torDeadzoneMin = 100; //200
 int torDeadzoneMax = 240; //280
-int Drehen = 100; //75
-int Fahren = 220; //170
+int Drehen = 60; //100 //70
+int Fahren = 170; //220
 
 //irmove 
 
@@ -62,6 +62,7 @@ void isr_process_encoder2(void)
 void setup() {
   pixy.init();
   Serial.begin(19200);
+  pixy.setLamp(false, false);
   //attachInterrupt(m1.getIntNum(), isr_process_encoder1, RISING);
   //attachInterrupt(m2.getIntNum(), isr_process_encoder2, RISING);
 
@@ -82,7 +83,7 @@ void setup() {
 }
 
 void loop() {
-  Serial.println("NO RUUUNN");
+  //Serial.println("NO RUUUNN");
   move(0,0);
 
   if(digitalRead(startswitch_pin_grun) == 1) {
@@ -99,6 +100,7 @@ void loop() {
 
   
   while(program_run == true) {
+    //_loop();
     if(digitalRead(startswitch_pin_grun) == 1) {
       program_run = true;
     } else if (digitalRead(startswitch_pin_rot) == 1) {
@@ -106,7 +108,7 @@ void loop() {
       analogWrite(relais_pin, 0); 
     }
 
-    Serial.println("RUN");
+    //Serial.println("RUN");
     lichtWert = analogRead(ldr_pin);
 
     if (lichtWert > ldr_schwelle) {

@@ -4,9 +4,9 @@ int irDeadzoneMin_x = 120;
 int irDeadzoneMax_x = 220;
 
 const int xm = -14;
-const int x0m = -8;
+const int x0m = -5; //8
 //0
-const int x0p = 8;
+const int x0p = 5;
 const int xp = 14;
 
 //---------------
@@ -17,7 +17,7 @@ const int y0m = -8;
 const int y0p = 8;
 const int yp = 9;
 
-int speed = 255;
+int speed = 270;
 
 float vorne = 0.6;
 float hinten = 0.5;
@@ -52,11 +52,11 @@ int irmove() {
     get_irX();
     get_irY();
 
-    Serial.print("X:");
+    /*Serial.print("X:");
     Serial.print(powerX);
     Serial.print(",");
     Serial.print("Y:");
-    Serial.println(powerY);
+    Serial.println(powerY);*/
 
     driveToBall();
 
@@ -125,7 +125,7 @@ void get_irValue() {
   }
 
   // Debug-Ausgabe 
-  
+  /*
   for (int i = 0; i < NUM_SENSORS; i++) {
     Serial.print("Sensor ");
     Serial.print(i);
@@ -133,6 +133,7 @@ void get_irValue() {
     Serial.println(irValue[i]);
   }
   Serial.println("------------------------"); 
+  */
 }
 
 // -------------------------------------------------
