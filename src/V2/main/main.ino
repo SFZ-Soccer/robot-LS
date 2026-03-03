@@ -179,10 +179,10 @@ void loop() {
   
   while(program_run == true) {
 
-    Serial.print("Spped 1:");
+    /*Serial.print("Spped 1:");
     Serial.print(m1.getCurrentSpeed());
     Serial.print(" ,Spped 2:");
-    Serial.println(m2.getCurrentSpeed());
+    Serial.println(m2.getCurrentSpeed());*/
 
     _loop(); //für Encoder
     if(digitalRead(startswitch_pin_grun) == 1) {
@@ -196,12 +196,12 @@ void loop() {
     lichtWert = analogRead(ldr_pin);
 
     if (lichtWert > ldr_schwelle) {
-      check_movement(1);
+      //check_movement(1);
       irmove();
       analogWrite(relais_pin, 200); 
       Serial.println("IR");
     } else {
-      check_movement(2);
+      //check_movement(2);
       tormove(torcolor);
       analogWrite(relais_pin, 255); //Dribbler an
       Serial.println("TOR");
