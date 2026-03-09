@@ -57,5 +57,7 @@ void setup() {
 
 void loop() {
   // Trigger-Puls senden
+  Serial.print(get_ultra_distance_links());
+  Serial.print("  ");
   Serial.println(get_ultra_distance_rechts());
 }

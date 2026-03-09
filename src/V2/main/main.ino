@@ -17,8 +17,8 @@
 //main
 
 float speedfaktor_l = 0.95;
-bool program_run = false;
 float speedfaktor_r = 1;
+bool program_run = false;
 int lichtWert = 1000;
 const int ldr_schwelle = 970;
 
@@ -107,7 +107,7 @@ void change_dir(int mode) {
 void check_movement(int programmstatus) {
   //1=irmove
   //2=tormove
-  if(m1.getCurrentSpeed() <= 10 && m2.getCurrentSpeed() <= 10) {
+  if((m1.getCurrentSpeed() <= 3.00 || m2.getCurrentSpeed() <= 3.00) && (m1.getCurrentSpeed() >= -3.00 || m2.getCurrentSpeed() >= -3.00)) {
     change_dir(1);
   }
 }
@@ -196,12 +196,12 @@ void loop() {
     lichtWert = analogRead(ldr_pin);
 
     if (lichtWert > ldr_schwelle) {
-      check_movement(1);
+      //check_movement(1);
       irmove();
-      analogWrite(relais_pin, 200); 
+      analogWrite(relais_pin, 200); //Dribbler (aus)
       Serial.println("IR");
     } else {
-      check_movement(2);
+      //check_movement(2);
       tormove(torcolor);
       analogWrite(relais_pin, 255); //Dribbler an
       Serial.println("TOR");
