@@ -179,10 +179,10 @@ void loop() {
   
   while(program_run == true) {
 
-    Serial.print("Spped 1:");
+    /*Serial.print("Spped 1:");
     Serial.print(m1.getCurrentSpeed());
     Serial.print(" ,Spped 2:");
-    Serial.println(m2.getCurrentSpeed());
+    Serial.println(m2.getCurrentSpeed());*/
 
     _loop(); //für Encoder
     if(digitalRead(startswitch_pin_grun) == 1) {
