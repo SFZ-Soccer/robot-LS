@@ -16,5 +16,5 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  move(255, 255); //rechts, links
+  move(255, -255); //rechts, links
 }

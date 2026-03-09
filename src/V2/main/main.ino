@@ -20,7 +20,7 @@ float speedfaktor_l = 0.95;
 float speedfaktor_r = 1;
 bool program_run = false;
 int lichtWert = 1000;
-const int ldr_schwelle = 970;
+const int ldr_schwelle = 480; //alt: 970
 
 //tormove
 

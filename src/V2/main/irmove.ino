@@ -17,7 +17,7 @@ const int y0m = -8;
 const int y0p = 8;
 const int yp = 9;
 
-int speed = 270; //408 = 100%
+int speed = 408; //408 = 100% //alt:270
 
 float vorne = 0.6;
 float hinten = 0.5;
