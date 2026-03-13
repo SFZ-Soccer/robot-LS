@@ -224,12 +224,12 @@ void loop() {
         analogWrite(relais_pin, 0);
       }
 
-      Serial.println("IR");
+      //Serial.println("IR");
     } else {
       dribblerDelay = false;
       tormove(torcolor);
       analogWrite(relais_pin, 255);
-      Serial.println("TOR");
+      //Serial.println("TOR");
     }
   }
 }

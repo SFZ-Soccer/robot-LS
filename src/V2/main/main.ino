@@ -14,6 +14,17 @@
 #define ECHO_PIN_rechts A14
 
 //------------------------------------------------------------------------------
+
+//taktik
+
+int ir_stillstand;
+int tormove_stillstand;
+unsigned long dirStartTime = 0;
+int lastDir = -1;
+
+unsigned long ir_stand_timer = 1000; // Schwellwert in ms
+
+
 //main
 
 float speedfaktor_l = 1; //0.95
@@ -21,6 +32,10 @@ float speedfaktor_r = 1;
 bool program_run = false;
 int lichtWert = 1000;
 const int ldr_schwelle = 500; //alt: 970
+
+static unsigned long dribblerTimer = 0;
+static bool dribblerDelay = false;
+static int dribbler_zeit = 1000; //Zeit wie lange der Dribbler noch an bleiben soll
 
 //tormove
 
@@ -92,10 +107,12 @@ void change_dir(int mode) {
       //drehung links
       move(-200,200);
       delay(600);
+      Serial.print("XXXX");
     } else if(get_ultra_distance_rechts() > get_ultra_distance_links()) {
       //drehung rechts
       move(200,-200);
       delay(600);
+      Serial.print("XXXX");
     }
   }
 
@@ -196,15 +213,23 @@ void loop() {
     lichtWert = analogRead(ldr_pin);
 
     if (lichtWert > ldr_schwelle) {
-      //check_movement(1);
       irmove();
-      analogWrite(relais_pin, 200); //Dribbler (aus)
-      Serial.println("IR");
+
+      if (!dribblerDelay) {
+        dribblerTimer = millis();
+        dribblerDelay = true;
+      }
+
+      if (millis() - dribblerTimer >= dribbler_zeit) {
+        analogWrite(relais_pin, 0);
+      }
+
+      //Serial.println("IR");
     } else {
-      //check_movement(2);
+      dribblerDelay = false;
       tormove(torcolor);
-      analogWrite(relais_pin, 255); //Dribbler an
-      Serial.println("TOR");
+      analogWrite(relais_pin, 255);
+      //Serial.println("TOR");
     }
   }
 }
