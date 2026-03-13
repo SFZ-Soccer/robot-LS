@@ -27,11 +27,19 @@ Die_Techno_Titanen = 16:20;
 LuSi = 16:40;
 
 //FR
-
-
+LuSi = 9:20;
+Die_Techno_Titanen = 10:20;
+Die_InformaTiger = 11:30;
+LuSi = 12:00;
+BIGGIRMI = 12:10;
+Die_Techno_Titanen = 13:10;
+(LuSi) = 14:40;
+Die_Techno_Titanen = 15:50;
+Die_InformaTiger = 16:00;
+BIGGIRMI = 16:40;
 
 //SA
-
+(LuSi) = 9:20/10:00;
 
 
 '#####################################################################'
@@ -40,10 +48,12 @@ LuSi = 16:40;
 LuSi = 10:40; F3 gegen "i-bots4" --> 12:4 gewonnen R1
 Supperteam_LuSi = 14:40; F11 gegen "ST1" --> 5:0 gewonnen
 Supperteam_LuSi = 15:20; F11 gegen "ST2" -->
-LuSi = 16:40; F2 gegen "i-bots 13" -->
+LuSi = 16:40; F2 gegen "i-bots 13" --> 19:8 gewonnen R2
  
 //FR
-
-
+LuSi = 9:20; F1 gegen "Penguins on Wheels" --> 18:14 gewonnen R3
+LuSi = 12:00; F1 gegen "Tux_3" --> R4
+(LuSi) = 14:40/15:20/16:00;
 
 //SA
+(LuSi) = 9:20/10:00;

@@ -211,7 +211,7 @@ void loop() {
     if (lichtWert > ldr_schwelle) {
       //check_movement(1);
       irmove();
-      analogWrite(relais_pin, 200); //Dribbler (aus)
+      analogWrite(relais_pin, 0); //Dribbler (aus)
       Serial.println("IR");
     } else {
       //check_movement(2);

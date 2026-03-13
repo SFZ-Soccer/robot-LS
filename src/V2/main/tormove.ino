@@ -2,6 +2,7 @@
 int torX;
 
 void tormove(int torcolor) { //1 = gelb; 2= blau
+  //torX = 0;
   getTor(torcolor);
   moveTor();
 }
