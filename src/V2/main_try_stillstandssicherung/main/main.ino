@@ -33,6 +33,10 @@ bool program_run = false;
 int lichtWert = 1000;
 const int ldr_schwelle = 500; //alt: 970
 
+static unsigned long dribblerTimer = 0;
+static bool dribblerDelay = false;
+static int dribbler_zeit = 1000; //Zeit wie lange der Dribbler noch an bleiben soll
+
 //tormove
 
 int torcolor; //1= blau; 2= gelb //signature
@@ -209,14 +213,22 @@ void loop() {
     lichtWert = analogRead(ldr_pin);
 
     if (lichtWert > ldr_schwelle) {
-      //check_movement(1);
       irmove();
-      analogWrite(relais_pin, 0); //Dribbler (aus)
+
+      if (!dribblerDelay) {
+        dribblerTimer = millis();
+        dribblerDelay = true;
+      }
+
+      if (millis() - dribblerTimer >= dribbler_zeit) {
+        analogWrite(relais_pin, 0);
+      }
+
       Serial.println("IR");
     } else {
-      //check_movement(2);
+      dribblerDelay = false;
       tormove(torcolor);
-      analogWrite(relais_pin, 255); //Dribbler an
+      analogWrite(relais_pin, 255);
       Serial.println("TOR");
     }
   }
