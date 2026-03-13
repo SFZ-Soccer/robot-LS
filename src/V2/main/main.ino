@@ -16,11 +16,11 @@
 //------------------------------------------------------------------------------
 //main
 
-float speedfaktor_l = 0.95;
+float speedfaktor_l = 1; //0.95
 float speedfaktor_r = 1;
 bool program_run = false;
 int lichtWert = 1000;
-const int ldr_schwelle = 480; //alt: 970
+const int ldr_schwelle = 500; //alt: 970
 
 //tormove
 
@@ -28,8 +28,8 @@ int torcolor; //1= blau; 2= gelb //signature
 
 int torDeadzoneMin = 100; //200
 int torDeadzoneMax = 240; //280
-int Drehen = 60; //100 //70
-int Fahren = 170; //220
+int Drehen = 120; //100 //70 //60
+int Fahren = 220; //220 //170
 
 //irmove 
 

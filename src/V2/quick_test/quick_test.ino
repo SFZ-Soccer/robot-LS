@@ -2,6 +2,8 @@
   1 = get ir Values
   2 = ultraschall r+l
   3 = motor
+  4 = irvalue
+  5 = colorswitc
 */
 
 
@@ -70,6 +72,11 @@ int get_ultra_distance_rechts() {
   return distance;
 }
 
+
+//----------------------------------------------------------------------------------------------------------------------------------------------
+
+#define ldr_pin 66
+int lichtWert = 0;
 
 //----------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -159,7 +166,7 @@ void get_irValue() {
     Serial.print(": ");
     Serial.println(irValue[i]);
   }
-  Serial.println("------------------------"); 
+  Serial.println(""); 
 }
 
 
@@ -187,6 +194,7 @@ void setup()
   pinMode(ECHO_PIN_rechts, INPUT);
   pinMode(TRIG_PIN_links, OUTPUT);
   pinMode(ECHO_PIN_links, INPUT);
+  //pinMode(lichtPin, INPUT);
 }
 
 void loop()
@@ -196,13 +204,15 @@ void loop()
     char a = Serial.read();
     switch(a)
     {
-      case '1':
+      case '1': 
       get_irValue();
+      Serial.println("#############################");
       break;
       case '2':
       Serial.print(get_ultra_distance_links());
       Serial.print("  ");
       Serial.println(get_ultra_distance_rechts());
+      Serial.println("#############################");
       break;
       case'3':
       move(255,255);
@@ -218,6 +228,15 @@ void loop()
       Serial.println("-100,-100");
       delay(1900);
       move(0,0);
+      Serial.println("#############################");
+      break;
+      case '4':
+      //lichtWert = analogRead(lichtPin); 
+      Serial.println(lichtWert);        
+      delay(500); 
+      Serial.println("#############################");
+      break;
+      case '5':
       default:
       break;
     }
