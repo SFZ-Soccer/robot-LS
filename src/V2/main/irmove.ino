@@ -132,7 +132,7 @@ void get_irValue() {
     Serial.print(": ");
     Serial.println(irValue[i]);
   }
-  Serial.println("------------------------"); 
+  Serial.println("------------------------"); s
   */
 }
 
