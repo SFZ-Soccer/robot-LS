@@ -124,7 +124,7 @@ void get_irValue() {
     irValue[sensorIndex] = zeitH / 13.0;
   }
 
-  // Debug-Ausgabe 
+  // Debug-Ausgabe für Serial Monitor
   /*
   for (int i = 0; i < NUM_SENSORS; i++) {
     Serial.print("Sensor ");
