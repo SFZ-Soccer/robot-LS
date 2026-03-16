@@ -23,7 +23,7 @@
 #include "MeOrion.h"
 #include <Wire.h>
 
-MeGyro gyro(0x69);
+MeGyro gyro(0,0x69);
 
 void setup()
 {

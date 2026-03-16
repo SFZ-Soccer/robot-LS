@@ -53,6 +53,8 @@ Pixy2 pixy;
 MeEncoderOnBoard m1(SLOT1); // rechts
 MeEncoderOnBoard m2(SLOT2); // links
 
+MeGyro gyro(0,0x69);
+
 void move(int m1speed, int m2speed) { //ohne Encoder //rechts, links
   m1.setMotorPwm(m1speed * speedfaktor_r * -1);
   m2.setMotorPwm(m2speed * speedfaktor_l); 
@@ -152,6 +154,7 @@ void isr_process_encoder2(void)
 
 void setup() {
   pixy.init();
+  gyro.update(); //ab hier muss der Roboter zum Tor stehen
   Serial.begin(9200);
   pixy.setLamp(false, false);
   attachInterrupt(m1.getIntNum(), isr_process_encoder1, RISING);
@@ -178,7 +181,6 @@ void setup() {
 }
 
 void loop() {
-  //Serial.println("NO RUUUNN");
   move(0,0);
 
   if(digitalRead(startswitch_pin_grun) == 1) {
@@ -195,12 +197,6 @@ void loop() {
 
   
   while(program_run == true) {
-
-    /*Serial.print("Spped 1:");
-    Serial.print(m1.getCurrentSpeed());
-    Serial.print(" ,Spped 2:");
-    Serial.println(m2.getCurrentSpeed());*/
-
     _loop(); //für Encoder
     if(digitalRead(startswitch_pin_grun) == 1) {
       program_run = true;
@@ -209,7 +205,6 @@ void loop() {
       analogWrite(relais_pin, 0); 
     }
 
-    //Serial.println("RUN");
     lichtWert = analogRead(ldr_pin);
 
     if (lichtWert > ldr_schwelle) {
@@ -224,12 +219,10 @@ void loop() {
         analogWrite(relais_pin, 0);
       }
 
-      //Serial.println("IR");
     } else {
       dribblerDelay = false;
       tormove(torcolor);
       analogWrite(relais_pin, 255);
-      //Serial.println("TOR");
     }
   }
 }
