@@ -1,6 +1,7 @@
 #include <Arduino.h>
 #include <MeAuriga.h>
 #include <Pixy2.h>
+#include <Wire.h>
 
 #define relais_pin A11
 #define ldr_pin 66
@@ -154,8 +155,9 @@ void isr_process_encoder2(void)
 
 void setup() {
   pixy.init();
-  gyro.update(); //ab hier muss der Roboter zum Tor stehen
+  //gyro.update(); //ab hier muss der Roboter zum Tor stehen
   Serial.begin(9200);
+  Serial.println("SETUP");
   pixy.setLamp(false, false);
   attachInterrupt(m1.getIntNum(), isr_process_encoder1, RISING);
   attachInterrupt(m2.getIntNum(), isr_process_encoder2, RISING);
@@ -181,10 +183,12 @@ void setup() {
 }
 
 void loop() {
+  Serial.println("LOOP");
   move(0,0);
 
   if(digitalRead(startswitch_pin_grun) == 1) {
       program_run = true;
+      Serial.println("RUN");
       if(digitalRead(colorswitch_pin) == 1) { //blau
         torcolor = 1;
       } else if (digitalRead(colorswitch_pin) == 0) {
@@ -209,7 +213,7 @@ void loop() {
 
     if (lichtWert > ldr_schwelle) {
       irmove();
-
+      Serial.println("IR");
       if (!dribblerDelay) {
         dribblerTimer = millis();
         dribblerDelay = true;
@@ -222,6 +226,7 @@ void loop() {
     } else {
       dribblerDelay = false;
       tormove(torcolor);
+      Serial.println("TOR");
       analogWrite(relais_pin, 255);
     }
   }
