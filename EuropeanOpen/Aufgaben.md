@@ -3,6 +3,7 @@
 Allgemeine Aufgaben die dann übernommen werden können von Luka/Simon.
 
 - [ ] Poster
+  - [ ] Programm aussuchen
   - [ ] Allgemeine Struktur
     - [ ] Überschrift Name
     - [ ] Flagge DE
