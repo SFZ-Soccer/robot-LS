@@ -3,7 +3,8 @@
 Allgemeine Aufgaben die dann übernommen werden können von Luka/Simon.
 
 - [ ] Poster
-  - [ ] Programm aussuchen
+  - [x] Programm aussuchen
+  - [ ] Format auswählen
   - [ ] Allgemeine Struktur
     - [ ] Überschrift Name
     - [ ] Flagge DE
@@ -17,6 +18,13 @@ Allgemeine Aufgaben die dann übernommen werden können von Luka/Simon.
     - [ ] Struktur main
     - [ ] Struktur irmove
     - [ ] Struktur tormove
+          
+  ### Infos:
+  Format:  
+  Seiten: 1   
+  Programm: PowerPoint  
+  Dateityp: .pptx
+  Überschrift:  
           
 ## Programm
 - [x] Bug fix das das Programm startet
