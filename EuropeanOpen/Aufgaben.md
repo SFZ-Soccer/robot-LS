@@ -4,11 +4,11 @@ Allgemeine Aufgaben die dann übernommen werden können von Luka/Simon.
 
 - [ ] Poster
   - [x] Programm aussuchen
-  - [ ] Format auswählen
+  - [x] Format auswählen
   - [ ] Allgemeine Struktur
-    - [ ] Überschrift Name
-    - [ ] Flagge DE
-    - [ ] Bild
+    - [x] Überschrift Name
+    - [x] Flagge DE
+    - [x] Bild
     - [ ] Design
     - [ ] Plätze für Unterkategorien  
   - [ ] Hardware
